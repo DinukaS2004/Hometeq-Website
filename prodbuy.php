@@ -1,10 +1,12 @@
 <?php
+session_start(); // start session to access session variables
 include("db.php");
 $pageName="a smart buy for a smart home"; //Create and populate a variable called $pageName
 echo "<link rel=stylesheet type=text/css href=mystylesheet.css>"; //Call in stylesheet
 echo "<title>".$pageName."</title>"; //display name of the page as window title
 echo "<body>";
 include ("headfile.html"); //include header layout file
+include("detectlogin.php"); //include detectlogin layout file
 echo "<h4>".$pageName."</h4>"; //display name of the page on the web page
 //retrieve the product id passed by URL from previous page using the GET method
 //it uses the $_GET superglobal variable to collect the value of the URL parameter u_prod_id

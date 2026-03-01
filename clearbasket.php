@@ -5,6 +5,7 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>"; //Call in styl
 echo "<title>".$pageName."</title>"; //display name of the page as window title
 echo "<body>";
 include ("headfile.html"); //include header layout file
+include("detectlogin.php"); //include detectlogin layout file
 echo "<h4>".$pageName."</h4>"; //display name of the page on the web page
 unset($_SESSION['basket']); //clear the basket session variable
 echo "<p class='updateInfo'><strong>Your basket has been cleared.</strong></p>";

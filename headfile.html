@@ -19,20 +19,40 @@
       </a>
       <h3><?php echo "London, ".date('l d F Y G:i:s');?></h3>
     </div>
-    <div id="navigation">
-      <ul>
-        <div>
-          <li><a href="index.php">Home Tech</a></li>
-          <li><a href="aboutus.php">About Us</a></li>
-          <li><a href="signup.php">Sign Up</a></li>
-          <li><a href="login.php">Login</a></li>
-        </div>
-        ;
-        <div>
-          <li><a href="basket.php">Smart Basket</a></li>
-          <li><a href="login.php">Staff Login</a></li>
-        </div>
-      </ul>
-    </div>
+    <div id='navigation'>
+<ul>
+<?php
+//if the user id in the session associative array is NOT set i.e. if the user is NOT logged in
+if (!isset($_SESSION['userid']))
+{
+?>
+<div>
+<li><a href='index.php'>Home Tech</a></li>
+<li><a href='aboutus.php'>About Us</a></li>
+<li><a href='signup.php'>Sign Up</a></li>
+<li><a href='login.php'>Login</a></li>
+</div>
+<div>
+<li><a href='basket.php'>Smart Basket</a></li>
+<li><a href='login.php'>Staff Login</a></li>
+</div>
+<?php
+}
+else
+{
+?>
+<div>
+<li><a href='index.php'>Home Tech</a></li>
+<li><a href='aboutus.php'>About Us</a></li>
+<li><a href='logout.php'>Logout</a></li>
+</div>
+<div>
+<li><a href='basket.php'>Smart Basket</a></li>
+</div>
+<?php
+}
+?>
+</ul>
+</div>
   </div>
   <div id="content">

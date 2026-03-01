@@ -1,9 +1,11 @@
 <?php
+session_start(); // start session to access session variables
 $pageName="homteq: cloud-controlled tech for your home"; //Create and populate a variable called $pageName
 echo "<link rel=stylesheet type=text/css href=mystylesheet.css>"; //Call in stylesheet
 echo "<title>".$pageName."</title>"; //display name of the page as window title
 echo "<body>";
 include ("headfile.html"); //include header layout file
+include("detectlogin.php"); //include detectlogin layout file
 echo "<h4>".$pageName."</h4>"; //display name of the page on the web page
 //display random text
 echo

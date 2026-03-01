@@ -6,6 +6,7 @@ echo "<link rel=stylesheet type=text/css href=mystylesheet.css>"; //Call in styl
 echo "<title>".$pageName."</title>"; //display name of the page as window title
 echo "<body>";
 include ("headfile.html"); //include header layout file
+include("detectlogin.php"); //include detectlogin layout file
 echo "<h4>".$pageName."</h4>"; //display name of the page on the web page
 
 if(isset($_POST['remove_prodid'])){
@@ -92,11 +93,24 @@ if (isset($_SESSION['basket'])) {
 
 echo "</table>";
 echo "<br>"; //line break
-echo "<p><a href='clearbasket.php'>CLEAR BASKET</a></p>"; //link to clear the basket
-echo "<br>"; //line break
-echo "<p>New hometeq customers<a href='signup.php'>Sign up</a></p>"; //link to return to index page
-echo "<br>"; //line break
-echo "<p>Returning hometeq customers<a href='login.php'>Log in</a></p>";
+if (isset($_SESSION['basket']) and count($_SESSION['basket'])>0)
+{
+//create anchor to call clearbasket.php to clear basket
+echo "<br><p class='updateInfo'><a href='clearbasket.php'>CLEAR BASKET</a></p>";
+//if the user id in the session associative array is set i.e. if the user has successfully logged in
+if (isset($_SESSION['userid']))
+{
+//create anchor to call checkout.php for logged in members to check out and place their order
+echo "<p class='updateInfo'><a href=checkout.php>CHECKOUT</a></p>";
+}
+else //else, that is if the user id in the session array is not set i.e. if the user is not logged in
+{
+//create anchor to call signup.php for new users to register
+echo "<p class='updateInfo'>New homteq customers: <a href='signup.php'>Sign up</a></p>";
+//create anchor to call signup.php for existing members to sign in
+echo "<p class='updateInfo'>Returning homteq customers: <a href='login.php'>Login</a></p>";
+}
+}
 include("footfile.html"); //include head layout
 mysqli_close($conn);
 echo "</body>";
